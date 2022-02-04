@@ -5,9 +5,7 @@
     $dbname     = "rsxms_project_sensor";
 
     $conn         = mysqli_connect($host, $username, $password, $dbname);
-    if ($conn) {
-        echo "Database Terhubung";
-    } else {
+    if (!$conn) {
         echo "Database Error";
-    }
+    } 
 ?>

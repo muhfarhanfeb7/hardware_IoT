@@ -10,14 +10,14 @@ session_start();
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = md5($_POST['password']);
-    $cpassword = md5($_POST['cpassword']);
+    $password = ($_POST['password']);
+    $cpassword = ($_POST['cpassword']);
  
     if ($password == $cpassword) {
-        $sql = "SELECT * FROM user WHERE email='$email'";
+        $sql = "SELECT * FROM users WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
-            $sql = "INSERT INTO user (username, email, password)
+            $sql = "INSERT INTO users (username, email, password)
                     VALUES ('$username', '$email', '$password')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
                 $_POST['password'] = "";
                 $_POST['cpassword'] = "";
                 session_start();
-                header("Location: form-login.php");
+                header("Location: index.php");
             } 
             else {
                 echo "<script>alert('Woops! Terjadi kesalahan.')</script>"; 
@@ -76,6 +76,7 @@ if (isset($_POST['submit'])) {
           <section class="login_content">
             <form action="" method="POST" class="login-email">
                 <p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
+                
                 <div class="input-group">
                     <input type="text" placeholder="Username" name="username"" required>
                 </div>
