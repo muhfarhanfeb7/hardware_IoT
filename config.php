@@ -1,8 +1,8 @@
 <?php
-    $host       = "localhost";
-    $username   = "root";
+    $host       = "";
+    $username   = "";
     $password   = "";
-    $dbname     = "rsxms_project_sensor";
+    $dbname     = "";
 
     $conn         = mysqli_connect($host, $username, $password, $dbname);
     if (!$conn) {
